@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
 		<meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -9,8 +9,7 @@
 		<link href="/assets/css/bootstrap_admin2.css" rel="stylesheet"/>
 		<link rel="icon" type="image/x-icon" href="/assets/images/favicon_upr08.png"/>
 		<script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-		<link
-		href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-7YFETEC4CK"></script>
@@ -23,7 +22,157 @@
 				gtag('config', 'G-7YFETEC4CK');
 		</script>
 	</head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+
+	<body>
+
+		<nav
+			class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
+			{# <!-- Sidenav Toggle Button--> #}
+			<button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
+			{# <!-- Navbar Brand-->
+						<!-- * * Tip * * You can use text or an image for your navbar brand.-->
+						<!-- * * * * * * When using an image, we recommend the SVG format.-->
+						<!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px--> #}
+			<a class="navbar-brand pe-3 ps-4 ps-lg-2" href=""><img src="/assets/images/free.png"></a>
+			{# <!-- Navbar Search Input-->
+						<!-- * * Note: * * Visible only on and above the lg breakpoint--> #}
+			<div class="form-inline me-auto d-none d-lg-block me-3">
+				{{ app.user.lastname | upper }} {{ app.user.firstname | capitalize }}
+			</div>
+			{# <!-- Navbar Items--> #}
+			<ul
+				class="navbar-nav align-items-center ms-auto">
+				{# <!-- Documentation Dropdown--> #}
+				<li class="nav-item dropdown no-caret d-none d-md-block me-3">
+					<a class="nav-link dropdown-toggl fw-500" href="{{ path('app_logout') }}">Déconnexion</a>
+				</li>
+			</ul>
+		</nav>
+		<div id="layoutSidenav">
+			<div id="layoutSidenav_nav">
+				<nav class="sidenav shadow-right sidenav-light">
+					<div class="sidenav-menu">
+						<div
+							class="nav accordion" id="accordionSidenav">
+							{# <!-- * * Note: * * Visible only on and above the sm breakpoint--> #}
+							<div class="sidenav-menu-heading text-center p-0 pt-4 m-0">Semaine n°{{ "now"|date("W") }}</div>
+							<div class="sidenav-menu-heading text-center p-0 m-0">{{ "now"|date("m/d/Y") }}</div>
+
+							{# <!-- Sidenav Accordion (Stock)--> #}
+							<a class="sidenav-menu-heading nav-link mt-5 lift" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseStocks" aria-expanded="false" aria-controls="collapseStocks">
+								<div class="nav-link-icon">
+									<i class="fas fa-city"></i>
+								</div>
+								Stocks
+								<div class="sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							<div class="collapse" id="collapseStocks" data-bs-parent="#accordionSidenav">
+								<nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+									<a class="nav-link" href="commandeconsommable.html">Commande consommable</a>
+									<a class="nav-link" href="inventairebox.html">Suivi box</a>
+									<a class="nav-link" href="suivideclarationtechnicien.html">Suivi déclaration technicien</a>
+
+								</nav>
+							</div>
+
+							{# <!-- Sidenav Accordion (Document)--> #}
+							<a class="sidenav-menu-heading nav-link mt-3 lift" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDocuments" aria-expanded="false" aria-controls="collapseStocks">
+								<div class="nav-link-icon">
+									<i class="fas fa-file-signature"></i>
+								</div>
+								Documents
+								<div class="sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							<div class="collapse" id="collapseDocuments" data-bs-parent="#accordionSidenav">
+								<nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+									<a class="nav-link" href="rtt.html">Refus tout travaux</a>
+									<a class="nav-link" href="dit.html">D.I.T</a>
+									<a class="nav-link" href="clientpro.html">PV Client PRO</a>
+									<a class="nav-link" href="annexed15.html">Annexe D15</a>
+									<a class="nav-link" href="constatdegradation.html">Constat de dégradation</a>
+									<a class="nav-link" href="constatreparation.html">Constat de réparation</a>
+									<a class="nav-link" href="fichehauteur.html">Fiche Hauteur</a>
+								</nav>
+							</div>
+
+							{# <!-- Sidenav Accordion (Véhicules)--> #}
+							<a class="sidenav-menu-heading nav-link mt-3 lift" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseVéhicules" aria-expanded="false" aria-controls="collapseStocks">
+								<div class="nav-link-icon">
+									<i class="fas fa-car"></i>
+								</div>
+								Véhicules
+								<div class="sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							<div class="collapse" id="collapseVéhicules" data-bs-parent="#accordionSidenav">
+								<nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+									<a class="nav-link" href="vehiculenacelleprisepose.html">Nacelle => Prise/Pose</a>
+									<a class="nav-link" href="vehiculesuivinacelle.html">Suivi de la nacelle</a>
+									<a class="nav-link" href="fichenacelleplateau.html">Déclaration changement de conducteur "Plateau"</a>
+									<a class="nav-link" href="fichenacellefourgon.html">Déclaration changement de conducteur "Fourgon"</a>
+								</nav>
+							</div>
+
+							{# <!-- Sidenav Accordion (Administration)--> #}
+							<a class="sidenav-menu-heading nav-link mt-3 lift" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseAdministration" aria-expanded="false" aria-controls="collapseStocks">
+								<div class="nav-link-icon">
+									<i class="fas fa-user-cog"></i>
+								</div>
+								Administration
+								<div class="sidenav-collapse-arrow">
+									<i class="fas fa-angle-down"></i>
+								</div>
+							</a>
+							<div class="collapse" id="collapseAdministration" data-bs-parent="#accordionSidenav">
+								<nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+									<a class="nav-link" href="/administration/user/{{app.user.id}}">Gestion des profils</a>
+									<a class="nav-link" href="">Suivi des PP/SAV</a>
+								</div>
+							</div>
+						</nav>
+					</div>
+
+					<div id="layoutSidenav_content">
+						<main>
+							<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+								<div class="container-xl px-1">
+									<div class="page-header-content pt-4">
+										<nav class="mt-4 rounded" aria-label="breadcrumb">
+											<ol class="breadcrumb px-3 py-2 rounded mb-0">
+												{{ breadcrumb }}
+											</ol>
+										</nav>
+									</div>
+								</div>
+							</header>
+
+							<!-- Main page content-->
+							<div class="container-xl px-1 mt-n10">
+								<div class="card text-gray-400">
+									<div class="card-header text-black text-lg">{{ title }}</div>
+									<div class="card-body px-0 flex"> {% block body %}{% endblock %}
+
+										</div>
+									</div>
+								</main>
+								{{ include('footer.html.twig') }}
+							</div>
+						</div>
+						<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
+						<script src="/assets/js/jquery-3.6.1.js"></script>
+						<script src="/assets/js/select2.js"></script>
+						<script src="/assets/js/scripts.js"></script>
+
+						{% block javascript %}{% endblock %}
+
+					</body>
+				</html>
+			</body>
+		</body>
+	</html>
