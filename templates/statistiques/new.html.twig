@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<div class="card-body">
+
+		{{ include('statistiques/_form.html.twig') }}
+
+		<table class="table table-striped table-responsive text-center">
+			<thead>
+				<tr>
+					<th scope="col">PP 37</th>
+					<th scope="col">SAV 37</th>
+					<th scope="col">Enregistrement</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for statistique in allStatistiques %}
+					<tr>
+						<td>{{ statistique.pp37 }}</td>
+						<td>{{ statistique.sav37 }}</td>
+						<td>{{ statistique.createdAt|date("m/d/Y - h:i:s" ) }}</td>
+						<td>
+							<button type="button" class="btn btn-red-soft" data-bs-toggle="modal" data-bs-target="#statistiqueDelete">
+								<i class="fa-solid fa-trash-can text-red"></i>
+							</button>
+							<!-- Modal  Delete Statistique-->
+							<div class="modal fade" id="statistiqueDelete" tabindex="-1" aria-labelledby="statistiqueDeleteLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header bg-danger-light">
+											<h5 class="modal-title text-danger" id="userDeleteLabel">Confirmez-vous la suppression de :</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body text-center p-10">
+											<span class="text-red">PP : {{ statistique.pp37 }} / SAV : {{ statistique.sav37 }}</span>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+											<form method="post" action="{{ path('app_statistiques_delete', {'id': statistique.id}) }}">
+												<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ statistique.id) }}">
+												<button class="btn btn-danger float-end">Supprimer</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- End Modal  Delete Statistique-->
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+
+{% endblock %}

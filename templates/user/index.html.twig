@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	{% include "user/user_menu.html.twig" %}
+
+	<div class="card-body">
+		<div class="row">
+			<div
+				class="col-xl-4">
+				<!-- Profile picture card-->
+				<div class="card mb-4 mb-xl-0">
+					<div class="card-header">Choix du profil</div>
+					<div class="card-body text-center">
+						<select name="profile" class="form-control fst-italic mb-4" required>
+							{% for user in users %}
+								<option value="{{user.id}}">{{user.lastname}} {{user.firstname}}</option>
+							{% endfor %}
+						</select>
+						<button class="btn btn-primary" type="submit">Montrer</button>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-xl-8">
+				<!-- Account details card-->
+				<div class="card mb-4">
+					<div class="card-header">Détails du profil</div>
+					<div class="card-body">
+						 {{ include('user/_form.html.twig') }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{{ form_start(form) }}
+
+<!-- Form Group (pp 37)-->
+<div class="d-flex justify-content-center">
+	<div class="col-5 p-2">
+		<div class="input-group text-center">
+			<div class="input-group-prepend form-control bg-gray-300 text-black">
+				PP 37
+			</div>
+			{{ form_widget (form.pp37)}}
+		</div>
+	</div>
+	<div class="col-5 p-2">
+		<div class="input-group text-center">
+			<div class="input-group-prepend form-control bg-gray-300 text-black">
+				SAV 37
+			</div>
+			{{ form_widget (form.sav37)}}
+		</div>
+	</div>
+	<div class="col-2 p-2 d-flex align-items-stretch justify-content-end">
+		<button class="btn btn-blue">{{ button_label|default('Enregistrer') }}</button>
+	</div>
+</div>
+
+{{ form_end(form) }}

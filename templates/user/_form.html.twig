@@ -1,0 +1,136 @@
+
+<div class="card-body">
+	{{ form_start(form) }}
+
+	{% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+	<!-- Form Row -->
+	<div
+		class="row gx-3 mb-3">
+		<!-- Form Group (last name)-->
+		<div class="col-md-6">
+			<div class="form-floating">
+				{{ form_widget (form.lastname)}}
+				<label class="fst-italic text-blue" for="">Nom :</label>
+			</div>
+		</div>
+		<!-- Form Group (first name)-->
+		<div class="col-md-6">
+			<div class="form-floating">
+				{{ form_widget (form.firstname)}}
+				<label class="fst-italic text-blue" for="">Prénom :</label>
+			</div>
+		</div>
+	</div>
+
+	<!-- Form Row -->
+	<div
+		class="row gx-3 mb-3">
+		<!-- Form Group (job)-->
+		<div class="col-md-4">
+			<div class="form-floating">
+				{{ form_widget (form.job)}}
+				<label class="fst-italic text-blue" for="">Poste :</label>
+			</div>
+		</div>
+		<!-- Form Group (upr)-->
+		<div class="col-md-4">
+			<div class="form-floating">
+				{{ form_widget (form.upr)}}
+				<label class="fst-italic text-blue" for="">Upr :</label>
+			</div>
+		</div>
+		<!-- Form Group (manager)-->
+		<div class="col-md-4">
+			<div class="form-floating">
+				{{ form_widget (form.manager)}}
+				<label class="fst-italic text-blue" for="">Manager :</label>
+			</div>
+		</div>
+	</div>
+
+	{% if app.request.attributes.get('_route') == "app_user_edit" %}
+    	<!-- Form Row-->
+	<div
+		class="row gx-3 mb-3">
+		<!-- Form Group (email address)-->
+		<div class="col-md-12">
+			<div class="form-floating">
+				<input class="form-control fst-italic text-black" type="text" value="{{user.manager}}" readonly> 
+				<label class="fst-italic text-blue" for="">Manager :</label>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	<!-- Form Row-->
+	<div
+		class="row gx-3 mb-3">
+		<!-- Form Group (email address)-->
+		<div class="col-md-12">
+			<div class="form-floating">
+				{{ form_widget (form.email)}}
+				<label class="fst-italic text-blue" for="">Email :</label>
+			</div>
+		</div>
+	</div>
+
+	{% if app.request.attributes.get('_route') == "app_user_edit" %}
+    	<!-- Form Row-->
+	<div
+		class="row gx-3 mb-3">
+		<!-- Form Group (email address)-->
+		<div class="col-md-12">
+			<div class="form-floating">
+				<input class="form-control fst-italic text-black" type="text" value="{{user.departement}}" readonly> 
+				<label class="fst-italic text-blue" for="">Département(s) :</label>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	<!-- Form Row -->
+	<div
+		class="row gx-3 mb-3">
+		<!-- Form Group (departement)-->
+		<div class="col-md-12">
+			<div class="form-group text-black-75">
+				<label class="fst-italic text-blue pb-2" for="">Département(s) :</label>
+				<select name="departement_choice[]" class="form-control fst-italic user_departement" multiple 
+				{% if app.request.attributes.get('_route') == "app_user_new" %}
+					required
+				{% endif %}
+				>
+					<optgroup label="Invité(e)">
+						<option value="XX">Invité(e)</option>
+					<optgroup label="UPR - 08">
+						<option value="15">15 - Cantal</option>
+						<option value="19">19 - Corréze</option>
+						<option value="23">23 - Creuse</option>
+						<option value="36">36 - Indre</option>
+						<option value="37">37 - Indre et loire</option>
+						<option value="41">41 - Loir et cher</option>
+						<option value="45">45 - Loiret</option>
+						<option value="49">49 - Maine et loire</option>
+						<option value="63">63 - Puy de dome</option>
+						<option value="79">79 - Deux sévres</option>
+						<option value="86">86 - Vienne</option>
+						<option value="87">87 - Haute vienne</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<!-- Save changes button-->
+	{% if app.request.attributes.get('_route') == "app_user_edit" %}
+    	<button type="button" class="btn btn-danger float-end" data-bs-toggle="modal" data-bs-target="#userDelete">
+			Supprimer
+		</button>	
+	{% endif %}
+	{{ form_widget (form.submit)}}
+
+	{{ form_end(form) }}
+</div>

@@ -1,0 +1,8 @@
+<nav class="nav nav-borders">
+	<a class="nav-link" href="/administration/user/{{app.user.id}}">Votre profil </a>
+	{% if user_roles %}
+		<a class="nav-link fw-700" href="{{ path("app_user_new")}}">Créer un profil</a>
+		<a class="nav-link fw-700" href="{{ path('app_user_edit', {'id':'1'})}}">Gérer les profils</a>
+	{% endif %}
+</nav>
+<hr class="mt-0 mb-4">

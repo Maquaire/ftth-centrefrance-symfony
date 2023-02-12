@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	{% include "user/user_menu.html.twig" %}
+
+	<div class="card-body">
+
+		<!-- Form Row -->
+		<div class="row gx-3 mb-3">
+			<!-- Form Group (last name)-->
+			<div class="col-md-6 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{app.user.lastname}}" readonly>
+					<label class="fst-italic text-blue" for="">Nom :</label>
+				</div>
+			</div>
+			<!-- Form Group (first name)-->
+			<div class="col-md-6 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{app.user.firstname}}" readonly>
+					<label class="fst-italic text-blue" for="">Prénom :</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- Form Row -->
+		<div class="row gx-3 mb-3">
+			<!-- Form Group (job)-->
+			<div class="col-md-4 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{app.user.job}}" readonly>
+					<label class="fst-italic text-blue" for="">Poste :</label>
+				</div>
+			</div>
+			<!-- Form Group (upr)-->
+			<div class="col-md-4 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{app.user.upr}}" readonly>
+					<label class="fst-italic text-blue" for="">Upr :</label>
+				</div>
+			</div>
+			<!-- Form Group (manager)-->
+			<div class="col-md-4 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{app.user.manager}}" readonly>
+					<label class="fst-italic text-blue" for="">Manager :</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- Form Row-->
+		<div class="row gx-3 mb-3">
+			<!-- Form Group (email address)-->
+			<div class="col-md-4">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{app.user.manager}}" readonly>
+					<label class="fst-italic text-blue" for="">Email :</label>
+				</div>
+			</div>
+			<!-- Form Group (departement)-->
+			<div class="col-md-4">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{app.user.departement}}" readonly>
+					<label class="fst-italic text-blue" for="">Département(s) :</label>
+				</div>
+			</div>
+			<!-- Form Group (createdAt)-->
+			<div class="col-md-4">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{user.createdAt|date('d/m/Y')}}" readonly>
+					<label class="fst-italic text-blue" for="">Crée le :</label>
+				</div>
+			</div>
+		</div>
+	
+        <!-- Form Row -->
+		<div class="row gx-3 mb-3">
+			<!-- Form Group (pro)-->
+			<div class="col-md-3 mb-3">
+				<div class="form-floating">
+					<input type="integer" class="form-control fst-italic text-black bg-white" value="{{user.numberPro}}" readonly>
+					<label class="fst-italic text-blue" for="">Pv pro :</label>
+				</div>
+			</div>
+			<!-- Form Group (dit)-->
+			<div class="col-md-3 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{user.numberDit}}" readonly>
+					<label class="fst-italic text-blue" for="">DIT :</label>
+				</div>
+			</div>
+			<!-- Form Group (D15)-->
+			<div class="col-md-3 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{user.number_d15}}" readonly>
+					<label class="fst-italic text-blue" for="">Annexe D15 :</label>
+				</div>
+			</div>
+            <!-- Form Group (report)-->
+			<div class="col-md-3 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{user.numberReport}}" readonly>
+					<label class="fst-italic text-blue" for="">Constats :</label>
+				</div>
+			</div>
+		</div>
+
+         <!-- Form Row -->
+		<div class="row gx-3 mb-3">
+			<!-- Form Group (fiche hauteur)-->
+			<div class="col-md-3 mb-3">
+				<div class="form-floating">
+					<input type="integer" class="form-control fst-italic text-black bg-white" value="{{user.numberSheetHeight}}" readonly>
+					<label class="fst-italic text-blue" for="">Fiche Hauteur :</label>
+				</div>
+			</div>
+			<!-- Form Group (fiche nacelle)-->
+			<div class="col-md-3 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{user.number_sheet_carrycot}}" readonly>
+					<label class="fst-italic text-blue" for="">Fiche Nacelle :</label>
+				</div>
+			</div>
+			<!-- Form Group (refus tous travaux)-->
+			<div class="col-md-3 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{user.numberRefusalAnyWork}}" readonly>
+					<label class="fst-italic text-blue" for="">Refus tous travaux :</label>
+				</div>
+			</div>
+            <!-- Form Group (connexion)-->
+			<div class="col-md-3 mb-3">
+				<div class="form-floating">
+					<input type="text" class="form-control fst-italic text-black bg-white" value="{{user.numberRefusalAnyWork}}" readonly>
+					<label class="fst-italic text-blue" for="">Connexion :</label>
+				</div>
+			</div>
+		</div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+	<script>
+		$(document).ready(function () {
+            $('.user_departement').select2();
+        });
+	</script>
+{% endblock %}

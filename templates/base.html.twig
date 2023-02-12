@@ -131,7 +131,9 @@
 							<div class="collapse" id="collapseAdministration" data-bs-parent="#accordionSidenav">
 								<nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
 									<a class="nav-link" href="/administration/user/{{app.user.id}}">Gestion des profils</a>
-									<a class="nav-link" href="/statistiques/new">Suivi des PP/SAV</a>
+										{% if app.user.lastname == "MAQUAIRE" %}
+											<a class="nav-link" href="/statistiques/new">Suivi des PP/SAV</a>
+										{% endif %}
 								</div>
 							</div>
 						</nav>

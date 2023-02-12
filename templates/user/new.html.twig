@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% include "user/user_menu.html.twig" %}
+    
+    {{ include('user/_form.html.twig') }}
+
+{% endblock %}
+
+{% block javascript %}
+	 <script>
+        $(document).ready(function() {
+            $('.user_departement').select2();
+        });
+    </script>
+{% endblock %}
+
