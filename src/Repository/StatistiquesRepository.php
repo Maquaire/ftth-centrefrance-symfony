@@ -46,6 +46,8 @@ class StatistiquesRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('intervention') 
             ->orderBy('intervention.createdAt', 'DESC')
+            ->setFirstResult( 'offset' )
+            ->setMaxResults( '10' )
             ->getQuery()
             ->getResult()
         ;

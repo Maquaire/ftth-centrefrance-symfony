@@ -62,7 +62,7 @@ class UserType extends AbstractType
                     "Technicien Télécom Optique"    => "Technicien Télécom Optique",
                     "Technicien De Renfort"         => "Technicien De Renfort"
                 ],
-                "preferred_choices" => ["Technicien Télécom Optique", "TTO"],
+                "preferred_choices" => ["Technicien Télécom Optique", "Technicien Télécom Optique"],
                 "attr" => [
                     "class"     => "form-control fst-italic text-black",
                     "required"  => true,
